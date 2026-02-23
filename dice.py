@@ -26,6 +26,7 @@ def suspense():
 
     
 if __name__ == "__main__":
+    suspense_mode = False
     if input("Enable suspense mode? (y/n): ").lower() == 'y':
         suspense_mode = True
     while True:

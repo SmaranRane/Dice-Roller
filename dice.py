@@ -24,23 +24,23 @@ def suspense():
         time.sleep(1)
     print()
 
-    
+# Add modifier
+
 if __name__ == "__main__":
     suspense_mode = False
     if input("Enable suspense mode? (y/n): ").lower() == 'y':
         suspense_mode = True
     while True:
         try:
-            dice_n = int(input("Enter the number of dice to roll: "))
             sides_n = int(input("Enter the number of sides on each die: "))
             
             dice = Dice(sides_n)
-            rolls = [dice.roll() for _ in range(dice_n)]
             if suspense_mode:
                 suspense()
-            print(f"{dice_n} roll(s) on a d{sides_n}: {rolls}")
+            print(f"Rolling a d{sides_n}: {dice.roll()}")
         except ValueError:
             print("Please enter valid integers for the number of dice and sides.")
         except KeyboardInterrupt:
             print("\nExiting the dice roller. Goodbye!")
             break
+

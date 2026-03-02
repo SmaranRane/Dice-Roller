@@ -24,23 +24,43 @@ def suspense():
         time.sleep(1)
     print()
 
-# Add modifier
-
 if __name__ == "__main__":
     suspense_mode = False
+    last_roll = 0
     if input("Enable suspense mode? (y/n): ").lower() == 'y':
+        print("Suspense mode enabled. Prepare to be in suspense :3")
         suspense_mode = True
+    else:
+        print("Suspense mode disabled. Boring ahh (¬_¬)")
     while True:
         try:
-            sides_n = int(input("Enter the number of sides on each die: "))
-            
-            dice = Dice(sides_n)
-            if suspense_mode:
-                suspense()
-            print(f"Rolling a d{sides_n}: {dice.roll()}")
+            command = input("Enter a command (type 'help' for list of commands): ")
+            if command == "help":
+                print("Available commands:")
+                print("  help - Show this help message")
+                print("  suspense - Toggle suspense mode on/off")
+                print("  d<sides> - Roll a die with the specified number of sides")
+                print("  +/-<number> - Add or subtract a modifier to the last roll (e.g., +2 or -1)")
+                print("  quit - Exit the program")
+            elif command == "suspense":
+                suspense_mode = not suspense_mode
+                print(f"Suspense mode is now {'enabled' if suspense_mode else 'disabled'}")
+            elif command.startswith("d"):
+                sides_n = int(command[1:])
+                dice = Dice(sides_n)
+                if suspense_mode:
+                    suspense()
+                last_roll = dice.roll()
+                print(f"Rolling a d{sides_n}: {last_roll}")
+            elif command.startswith("+") or command.startswith("-"):
+                modifier = int(command)
+                new_roll = last_roll + modifier
+                print(f"Adding {modifier} to {last_roll}: {new_roll}")
+            elif command == "quit":
+                print("Exiting the dice roller. Goodbye!")
+                break
         except ValueError:
             print("Please enter valid integers for the number of dice and sides.")
         except KeyboardInterrupt:
             print("\nExiting the dice roller. Goodbye!")
             break
-

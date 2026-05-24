@@ -29,21 +29,23 @@ def suspense():
     print()
 
 if __name__ == "__main__":
-    suspense_mode = False
+    suspense_mode = input("Enable suspense mode? (y/n): ").lower()
     last_roll = 0
-    if input("Enable suspense mode? (y/n): ").lower() == 'y':
+    if suspense_mode == 'y':
         print("Suspense mode enabled. Prepare to be in suspense 😱")
         suspense_mode = True
-    elif input("Enable suspense mode? (y/n): ").lower() == 'n':
+    elif suspense_mode == 'n':
         print("Suspense mode disabled. Boring 🙄")
+        suspense_mode = False
     else:
         print("Invalid input 🤨. Suspense mode disabled by default.")
+        suspense_mode = False
     while True:
         try:
             command = input("Enter a command: ")
             if command == "help":
                 print("Available commands:")
-                print("  help - Show this help message")
+                print("  help - Show this help message")    
                 print("  suspense - Toggle suspense mode on/off")
                 print("  <num>d<sides> [+<modifier> / +<num>d<sides>] - Roll a specified number of dice with the specified number of sides. You can also add modifiers or roll multiple types of dice (e.g. 2d6+3 or d20+d8).")
                 print("  quit - Exit the program")

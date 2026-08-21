@@ -32,13 +32,13 @@ if __name__ == "__main__":
     suspense_mode = input("Enable suspense mode? (y/n): ").lower()
     last_roll = 0
     if suspense_mode == 'y':
-        print("Suspense mode enabled. Prepare to be in suspense 😱")
+        print("Suspense mode enabled. Prepare to be in suspense ꉂ૮(°□°'˶)ა")
         suspense_mode = True
     elif suspense_mode == 'n':
-        print("Suspense mode disabled. Boring 🙄")
+        print("Suspense mode disabled. Boring ¬_¬")
         suspense_mode = False
     else:
-        print("Invalid input 🤨. Suspense mode disabled by default.")
+        print("Invalid input ծ_Ô. Suspense mode disabled by default.")
         suspense_mode = False
     while True:
         try:

@@ -7,12 +7,9 @@ suspense_mode = False
 class Dice:
     def __init__(self, sides):
         self.sides = sides
-        self.last_roll = 1
         self.rng = RNG()
 
     def roll(self):
-        #start_num = self.last_roll % self.sides + 1
-        
         aggression = self.rng.rand_unit_interval()
         if aggression <= 0.01:
             aggression = 0.01
@@ -23,7 +20,6 @@ class Dice:
         for _ in range(bounce):
             rolled_num = self.rng.rand_int(self.sides)
         return rolled_num
-
 
 def suspense():
     print("Rolling the dice", end="", flush=True)

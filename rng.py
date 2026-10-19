@@ -18,7 +18,8 @@ class RNG:
         return curr_seed / self.m
 
     def rand_int(self, max_value):
-        return int(self.rand_unit_interval() * max_value)
+        value = int(self.rand_unit_interval() * max_value)
+        return value if value > 0 else 1
 
     def rand_float(self, max_value):
         return self.rand_unit_interval() * max_value
